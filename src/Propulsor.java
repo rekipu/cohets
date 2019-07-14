@@ -3,7 +3,7 @@ public class Propulsor {
 	int potencia;
 	int potenciaActual;
 	
-	public Propulsor(int potencia, int maxPotencia) {
+	public Propulsor(int potencia) {
 		this.potencia = potencia;
 		this.potenciaActual = 0;
 		
@@ -15,17 +15,19 @@ public class Propulsor {
 	
 	public int accelProp(int a) {
 		if((potenciaActual + a)<=potencia) {
-			return (potenciaActual+a);
+			potenciaActual +=a;
+			return (potenciaActual);
 		}else {
 			potenciaActual= potencia;
 			return potencia;
 		}
 	}
 	public int frenaProp(int a) {
-		if((potenciaActual - a >=0)) {
-			return (potenciaActual-a);
+		if((potenciaActual - a >=(-potencia))) {
+			potenciaActual -=a;
+			return (potenciaActual);
 		}else {
-			potenciaActual=0;
+			potenciaActual=(-potencia);
 			return potenciaActual;
 		}
 	}

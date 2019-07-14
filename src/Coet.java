@@ -4,10 +4,12 @@ import java.util.Arrays;
 public class Coet {
 	private String name;
 	private ArrayList<Propulsor> propulsors;
+	private double speed;
 
 	public Coet(String nom, ArrayList<Propulsor> propulsors) {
 		this.name = nom;
 		this.propulsors = propulsors;
+		this.speed = 0;
 
 	}
 
@@ -30,6 +32,15 @@ public class Coet {
 		for (int i = 0; i < propulsors.size(); i++) {
 			propulsors.get(i).frenaProp(10);
 		}
+	}
+	
+	public double getSpeed() {
+		int potenciaTotal=0;
+		for (int i = 0; i < propulsors.size(); i++) {
+			potenciaTotal += propulsors.get(i).potenciaActual;
+		}
+		speed = speed + 100 * Math.sqrt(potenciaTotal);
+		return speed;
 	}
 
 

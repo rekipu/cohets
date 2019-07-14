@@ -21,27 +21,31 @@ public class Coet {
 		}
 		return ("El coet " + name + " té " + propulsors.size() + " propulsors." + Arrays.toString(valorsPropulsors));
 	}
-	
+
 	public void acceleraCoet() {
 		for (int i = 0; i < propulsors.size(); i++) {
 			propulsors.get(i).accelProp(10);
 		}
 	}
-	
+
 	public void frenaCoet() {
 		for (int i = 0; i < propulsors.size(); i++) {
 			propulsors.get(i).frenaProp(10);
 		}
 	}
-	
+
 	public double getSpeed() {
-		int potenciaTotal=0;
+		int potenciaTotal = 0;
 		for (int i = 0; i < propulsors.size(); i++) {
 			potenciaTotal += propulsors.get(i).potenciaActual;
 		}
-		speed = speed + 100 * Math.sqrt(potenciaTotal);
-		return speed;
+		if (potenciaTotal >= 0) {
+			speed = speed + (100 * Math.sqrt(potenciaTotal));
+			return speed;
+		}else {
+			speed = speed - (100 * Math.sqrt(Math.abs(potenciaTotal)));
+			return speed;
+		}
 	}
-
 
 }

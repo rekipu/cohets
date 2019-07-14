@@ -23,11 +23,11 @@ public class Propulsor {
 		}
 	}
 	public int frenaProp(int a) {
-		if((potenciaActual - a >=(-potencia))) {
+		if((potenciaActual - a >=-Math.abs(potencia))) {
 			potenciaActual -=a;
 			return (potenciaActual);
 		}else {
-			potenciaActual=(-potencia);
+			potenciaActual=-Math.abs(potencia);
 			return potenciaActual;
 		}
 	}

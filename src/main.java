@@ -22,25 +22,26 @@ public class main {
 		System.out.println(coet2);
 		System.out.println(coet1.getSpeed());
 		System.out.println(coet2.getSpeed());
-		coet1.acceleraCoet();
-		coet1.acceleraCoet();
-		coet1.acceleraCoet();
-		coet2.acceleraCoet();
-		coet2.acceleraCoet();
-		coet2.acceleraCoet();
+		
+		for (int i = 0; i < 3; i++) {
+			coet1.acceleraCoet();
+			coet2.acceleraCoet();
+		}
+		
 		System.out.println(coet1.getSpeed());
 		System.out.println(coet2.getSpeed());
-		coet1.frenaCoet();
-		coet1.frenaCoet();
-		coet1.frenaCoet();
-		coet1.frenaCoet();
-		coet1.frenaCoet();
+				
+		for (int i = 0; i < 5; i++) {
+			coet1.frenaCoet();
+		}
+		
 		for (int i = 0; i < 7; i++) {
 			coet2.acceleraCoet();
 		}
+		
 		System.out.println(coet1.getSpeed());
 		System.out.println(coet2.getSpeed());
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 15; i++) {
 			coet1.acceleraCoet();
 			coet2.acceleraCoet();
 		}

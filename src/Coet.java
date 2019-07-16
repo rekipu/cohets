@@ -16,7 +16,7 @@ public class Coet {
 	public void desiredSpeed(int desiredSpeed) {
 		int potenciaTotal = 0;
 		double segons = 0;
-		double potenciaActual=0;
+		double potenciaActual = 0;
 		for (int i = 0; i < propulsors.size(); i++) {
 			potenciaTotal += propulsors.get(i).potencia;
 		}
@@ -35,21 +35,30 @@ public class Coet {
 		}
 
 		while ((potenciaActual + maxAccelPerTurn[(int) segons] < desiredSpeed) && (segons <= 9)) {
+			potenciaActual += maxAccelPerTurn[(int) segons];
 			segons++;
-			potenciaActual += maxAccelPerTurn[(int)segons];
-		}
-
-		while ((potenciaActual + maxAccelPerTurn[9]) < desiredSpeed) {
-			segons++;
-		}
-		
-		if(segons <=9) {
 			
 		}
 
-		segons += 1 - ((potenciaTotal + maxAccelPerTurn[(int) segons] * (segons))
-				/ (potenciaTotal + maxAccelPerTurn[(int) segons] * segons + 1));
-		System.out.println("el coet tardarà " + segons);
+		while ((potenciaActual + maxAccelPerTurn[9]) < desiredSpeed) {
+			potenciaActual += maxAccelPerTurn[9];
+			segons++;
+		}
+
+		if (segons <= 9) {
+			segons += 1 - ((potenciaTotal + maxAccelPerTurn[(int) segons] * (segons))
+					/ (potenciaTotal + maxAccelPerTurn[(int) segons] * segons + 1));
+		} else {
+
+			segons += 1 - ((potenciaTotal + maxAccelPerTurn[9] * (segons))
+					/ (potenciaTotal + maxAccelPerTurn[9] * segons + 1));
+			
+		}
+		System.out.println("el coet tardarà " + segons +"segons");
+		for (int i = 0; i < propulsors.size(); i++) {
+			propulsors.get(i).setSecs(segons);
+			propulsors.get(i).start();
+		}
 	}
 
 	@Override

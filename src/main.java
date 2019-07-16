@@ -22,7 +22,8 @@ public class main {
 		Coet coet1 = new Coet("32WESSDS", propulsorsCoet1);
 		Coet coet2 = new Coet("LDSFJA32", propulsorsCoet2);
 		
-		coet1.desiredSpeed(500000);
+		coet1.desiredSpeed(5000);
+		coet2.desiredSpeed(20000);
 		/*
 		System.out.println(coet1);
 		System.out.println(coet2);

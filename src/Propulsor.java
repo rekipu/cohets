@@ -1,12 +1,20 @@
 
-public class Propulsor {
+public class Propulsor  extends Thread{
 	int potencia;
 	int potenciaActual;
+	
+	
+	
 	
 	public Propulsor(int potencia) {
 		this.potencia = potencia;
 		this.potenciaActual = 0;
+		run();
 		
+	}
+	@Override
+	public void run() {
+		System.out.println("Thread propulsor" + this);
 	}
 	@Override
 	  public String toString() {

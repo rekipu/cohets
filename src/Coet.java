@@ -13,6 +13,45 @@ public class Coet {
 
 	}
 
+	public void desiredSpeed(int desiredSpeed) {
+		int potenciaTotal = 0;
+		double segons = 0;
+		double potenciaActual=0;
+		for (int i = 0; i < propulsors.size(); i++) {
+			potenciaTotal += propulsors.get(i).potencia;
+		}
+		double[] maxAccelPerTurn = new double[11];
+		// calculem maxima potencia de tots els reactors cada un dels deu primers segons
+		for (int i = 0; i < 10; i++) {
+			int potenciaPerTorn = 0;
+			for (int e = 0; e < propulsors.size(); e++) {
+				if (propulsors.get(e).potencia <= (i + 1) * 10) {
+					potenciaPerTorn += (propulsors.get(e).potencia);
+				} else {
+					potenciaPerTorn += (i + 1) * 10;
+				}
+				maxAccelPerTurn[i] = 100 * Math.sqrt(potenciaPerTorn);
+			}
+		}
+
+		while ((potenciaActual + maxAccelPerTurn[(int) segons] < desiredSpeed) && (segons <= 9)) {
+			segons++;
+			potenciaActual += maxAccelPerTurn[(int)segons];
+		}
+
+		while ((potenciaActual + maxAccelPerTurn[9]) < desiredSpeed) {
+			segons++;
+		}
+		
+		if(segons <=9) {
+			
+		}
+
+		segons += 1 - ((potenciaTotal + maxAccelPerTurn[(int) segons] * (segons))
+				/ (potenciaTotal + maxAccelPerTurn[(int) segons] * segons + 1));
+		System.out.println("el coet tardarà " + segons);
+	}
+
 	@Override
 	public String toString() {
 		int[] valorsPropulsors = new int[propulsors.size()];
@@ -42,7 +81,7 @@ public class Coet {
 		if (potenciaTotal >= 0) {
 			speed = speed + (100 * Math.sqrt(potenciaTotal));
 			return speed;
-		}else {
+		} else {
 			speed = speed - (100 * Math.sqrt(Math.abs(potenciaTotal)));
 			return speed;
 		}

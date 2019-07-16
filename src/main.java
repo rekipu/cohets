@@ -4,6 +4,7 @@ import java.util.Arrays;
 public class main {
 
 	public static void main(String[] args) {
+		System.out.println(100+(Math.sqrt(100)));
 		Propulsor p1 = new Propulsor(10);
 		Propulsor p2 = new Propulsor(30);
 		Propulsor p3 = new Propulsor(80);
@@ -14,10 +15,15 @@ public class main {
 		Propulsor p7 = new Propulsor(50);
 		Propulsor p8 = new Propulsor(30);
 		Propulsor p9 = new Propulsor(10);
+		System.out.println(p9.activeCount());
+
 		ArrayList<Propulsor> propulsorsCoet2 = new ArrayList<Propulsor>(Arrays.asList(p4, p5, p6, p7, p8, p9));
 
 		Coet coet1 = new Coet("32WESSDS", propulsorsCoet1);
 		Coet coet2 = new Coet("LDSFJA32", propulsorsCoet2);
+		
+		coet1.desiredSpeed(500000);
+		/*
 		System.out.println(coet1);
 		System.out.println(coet2);
 		System.out.println(coet1.getSpeed());
@@ -41,12 +47,13 @@ public class main {
 		
 		System.out.println(coet1.getSpeed());
 		System.out.println(coet2.getSpeed());
+		System.out.println(p9.activeCount());
 		for (int i = 0; i < 15; i++) {
 			coet1.acceleraCoet();
 			coet2.acceleraCoet();
 		}
 		System.out.println(coet1.getSpeed());
-		System.out.println(coet2.getSpeed());
+		System.out.println(coet2.getSpeed());*/
 	}
 
 }
